@@ -2,7 +2,9 @@
 <img
 src="icons/link-gopher-64.png" alt="Logo Logo">
 
-[![GitHub](https://img.shields.io/badge/GitHub-1e1e1e?style=for-the-badge&logo=GitHub&logoColor=04D58F)](https://github.com/az0/linkgopher)
+# Link Gopher
+
+[![GitHub](https://img.shields.io/badge/Original-1e1e1e?style=for-the-badge&logo=GitHub&logoColor=04D58F)](https://github.com/az0/linkgopher)
 [![GitHub](https://img.shields.io/badge/Fork-1e1e1e?style=for-the-badge&logo=GitHub&logoColor=04D58F)](https://github.com/deathrashed/linkgopher)
 
 </div>
