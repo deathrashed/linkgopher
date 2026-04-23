@@ -1,9 +1,43 @@
+/* Dark mode - minimal changes to original */
+body {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+}
+
+/* Controls section - simple addition */
+.controls {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+#filterInput, #sortSelect, #copyAllBtn {
+  padding: 4px 8px;
+  background: #333;
+  color: #f0f0f0;
+  border: 1px solid #444;
+  border-radius: 3px;
+}
+
+#copyAllBtn {
+  cursor: pointer;
+}
+
+#copyAllBtn:hover {
+  background: #444;
+}
+
+/* Original styles with color changes */
 #links:not(:empty)::before,
 #domains:not(:empty)::before {
   content: attr(data-content);
   display: block;
   font-weight: bold;
   margin-bottom: 1em;
+  color: #04D58F;
+  cursor: pointer;
+  user-select: none;
 }
 
 #domains {
@@ -16,5 +50,24 @@
 
 #links:not(:empty) ~ #message,
 #domains:not(:empty) ~ #message {
+  display: none;
+}
+
+/* Link styling - blue links with green hover */
+a {
+  color: #4A90E2;
+}
+
+a:hover {
+  outline: 2px solid #04D58F;
+  outline-offset: 2px;
+}
+
+/* Collapsed state */
+.collapsed {
+  margin-bottom: 1em;
+}
+
+.collapsed + div {
   display: none;
 }

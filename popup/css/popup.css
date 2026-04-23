@@ -1,12 +1,45 @@
+body {
+  background-color: #1e1e1e;
+  margin: 0;
+  padding: 0;
+}
+
 .container {
   flex-wrap: nowrap;
   flex-direction: column;
+  border-radius: 8px;
+  padding: 10px;
 }
 
 .container > button {
   white-space: nowrap;
+  padding: 2px 16px;
+  border: none;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #4b4b4b 0%, #282828 100%);
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
 }
+
+.container > button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, #323232 0%, #171717 100%);
+  outline: 2px solid #04D58F;
+  outline-offset: 2px;
+}
+
+.container > button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 .container > button:not(:last-child) {
   margin-bottom: .5em;
-  box-shadow: darkgray
 }

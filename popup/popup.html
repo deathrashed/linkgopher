@@ -4,13 +4,198 @@
     <meta charset="utf-8">
     <title>Link Gopher</title>
     <link rel="stylesheet" href="css/popup.css">
+    <style>
+      /* Fixed width popup */
+      body {
+        width: 415px;
+        min-width: 415px;
+        max-width: 415px;
+        margin: 0;
+        padding: 5px;
+        box-sizing: border-box;
+      }
+
+      /* Additional styles for link display */
+      .link-display {
+        display: block;
+        max-height: 400px;
+        overflow-y: auto;
+        margin-top: 10px;
+        padding: 10px;
+        background: #1e1e1e;
+        border-radius: 8px;
+      }
+
+      .link-controls {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 10px;
+        flex-wrap: wrap;
+      }
+
+      .link-controls input,
+      .link-controls select {
+        padding: 4px 8px;
+        background: #333;
+        color: #f0f0f0;
+        border: 1px solid #444;
+        border-radius: 3px;
+        font-size: 12px;
+        flex: 1;
+        min-width: 0;
+      }
+
+      .link-controls select {
+        flex: 0 0 auto;
+        min-width: 80px;
+      }
+
+      .links-section {
+        margin-bottom: 15px;
+      }
+
+      .links-section h3 {
+        color: #04D58F;
+        margin: 0 0 5px 0;
+        font-size: 14px;
+        cursor: pointer;
+        user-select: none;
+      }
+
+      .links-section.collapsed .links-content {
+        display: none;
+      }
+
+      .links-content {
+        min-height: 40px;
+      }
+
+      .links-content a {
+        display: block;
+        color: #4A90E2;
+        text-decoration: none;
+        font-size: 11px;
+        word-wrap: break-word;
+        word-break: break-all;
+        overflow-wrap: break-word;
+        margin: 2px 0;
+        padding: 2px 0;
+      }
+
+      .links-content a:hover {
+        outline: 2px solid #04D58F;
+        outline-offset: 1px;
+      }
+
+      .extract-heading {
+        color: #04D58F;
+        font-size: 14px;
+        margin: 0 0 10px 0;
+        font-weight: bold;
+      }
+
+      .button-row {
+        display: flex;
+        gap: 5px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      .button-group {
+        display: flex;
+        gap: 5px;
+      }
+
+      .button-row button {
+        padding: 2px 16px;
+        background: #4b4b4b;
+        color: rgb(255, 255, 255);
+        border: none;
+        border-radius: 5px;
+        font-weight: 600;
+        font-size: 13px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+        flex: 0 0 auto;
+      }
+
+      .button-row button:hover {
+        outline: 2px solid #04D58F;
+        outline-offset: 2px;
+      }
+
+      .button-row button.active {
+        background: #5a5a5a;
+        outline: 2px solid #04D58F;
+        outline-offset: 2px;
+      }
+
+      .placeholder {
+        color: #666;
+        font-style: italic;
+        font-size: 12px;
+      }
+
+      /* Dark mode scrollbar */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #2a2a2a;
+        border-radius: 5px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #555;
+        border-radius: 5px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: #777;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
-      <button id="extract-all" type="button">Extract All Links</button>
-      <button id="extract-domains" type="button">Extract Only Domains</button>
-      <button id="extract-some" type="button">Extract Links by Filter</button>
-      <button id="about-linkgopher" type="button">About Link Gopher</button>
+      <div class="extract-heading">Extract:</div>
+      <div class="button-row">
+        <div class="button-group">
+          <button id="extract-all" type="button">All</button>
+          <button id="extract-domains" type="button">Domain</button>
+          <button id="extract-some" type="button">Filter</button>
+        </div>
+        <div class="button-group">
+          <button id="copy-all-btn">Copy</button>
+          <button id="open-full-btn">Page</button>
+        </div>
+      </div>
+
+      <div id="link-display" class="link-display">
+        <div class="link-controls">
+          <input type="text" id="filter-input" placeholder="Filter...">
+          <select id="sort-select">
+            <option value="default">Sort</option>
+            <option value="alpha">A-Z</option>
+            <option value="reverse">Z-A</option>
+          </select>
+        </div>
+
+        <div class="links-section" id="links-section">
+          <h3 id="links-header">Links</h3>
+          <div class="links-content" id="links-content">
+            <div class="placeholder">Select an extraction option above</div>
+          </div>
+        </div>
+
+        <div class="links-section" id="domains-section">
+          <h3 id="domains-header">Domains</h3>
+          <div class="links-content" id="domains-content">
+            <div class="placeholder">Select an extraction option above</div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script src="js/popup.js" charset="utf-8"></script>

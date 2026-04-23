@@ -6,6 +6,16 @@
     <link rel="stylesheet" href="css/linkgopher.css">
   </head>
   <body>
+    <div class="controls">
+      <input type="text" id="filterInput" placeholder="Filter...">
+      <select id="sortSelect">
+        <option value="default">Sort</option>
+        <option value="alpha">A-Z</option>
+        <option value="reverse">Z-A</option>
+      </select>
+      <button id="copyAllBtn">Copy All</button>
+    </div>
+    
     <div id="links" data-content="Links"></div>
     <div id="domains" data-content="Domains"></div>
     <h2 id="message" data-content="Please wait..."></h2>
