@@ -35,7 +35,7 @@ body {
   display: block;
   font-weight: bold;
   margin-bottom: 1em;
-  color: #04D58F;
+  color: #c5372d;
   cursor: pointer;
   user-select: none;
 }
@@ -59,7 +59,7 @@ a {
 }
 
 a:hover {
-  outline: 2px solid #04D58F;
+  outline: 2px solid #c5372d;
   outline-offset: 2px;
 }
 
